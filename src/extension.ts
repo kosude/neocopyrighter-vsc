@@ -1,23 +1,25 @@
+/*
+ *   Copyright (c) 2023 Jack Bennett
+ *   All rights reserved.
+ *
+ *   Please see the LICENCE file for more information.
+ */
+
 import * as vscode from 'vscode';
+import { commands } from 'vscode';
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
+import { addCopyrightNotice } from './lib/commands';
+
+/**
+ * Static extension activation set-up function
+ *
+ * @param context VS Code extension API context
+ */
 export function activate(context: vscode.ExtensionContext) {
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "neocopyrighter" is now active!');
+	console.log("NeoCopyrighter enabled");
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('neocopyrighter.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from neocopyrighter!');
-	});
-
-	context.subscriptions.push(disposable);
+    // register command handles
+	context.subscriptions.push(
+        commands.registerCommand("neocopyrighter.add-copyright-notice", addCopyrightNotice),
+    );
 }
-
-// This method is called when your extension is deactivated
-export function deactivate() {}

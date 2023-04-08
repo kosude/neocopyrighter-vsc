@@ -14,8 +14,8 @@
     "contributes": {
         "commands": [
             {
-                "command": "neocopyrighter.helloWorld",
-                "title": "NeoCopyrighter: Hello World"
+                "command": "neocopyrighter.add-copyright-notice",
+                "title": "NeoCopyrighter: Add copyright notice to current file"
             }
         ]
     },
