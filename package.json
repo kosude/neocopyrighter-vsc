@@ -1,13 +1,11 @@
 {
     "name": "neocopyrighter",
-    "version": "0.0.1",
-
+    "version": "0.0.2",
     "displayName": "NeoCopyrighter",
     "publisher": "jack-bennett",
     "description": "Automatically insert copyright and licence notice in source files",
     "license": "MIT",
     "icon": "./assets/ExtIcon.png",
-
     "bugs": {
         "url": "https://github.com/kosude/neocopyrighter/issues"
     },
@@ -15,19 +13,17 @@
         "type": "github",
         "url": "https://github.com/kosude/neocopyrighter/"
     },
-
     "galleryBanner": {
         "color": "#2A2525",
         "theme": "dark"
     },
-
-    "categories": ["Other"],
+    "categories": [
+        "Other"
+    ],
     "preview": true,
-
     "engines": {
         "vscode": "^1.77.0"
     },
-
     "main": "./out/extension.js",
     "activationEvents": [],
     "contributes": {
@@ -38,7 +34,6 @@
             }
         ]
     },
-
     "scripts": {
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -p ./",
@@ -47,7 +42,6 @@
         "lint": "eslint src --ext ts",
         "test": "node ./out/test/runTest.js"
     },
-
     "devDependencies": {
         "@types/vscode": "^1.77.0",
         "@types/glob": "^8.1.0",
