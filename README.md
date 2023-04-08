@@ -1,7 +1,4 @@
-<!-- <p align=center>
-    <img src="assets/BadgeDark.svg#gh-light-mode-only" height=90px>
-    <img src="assets/BadgeLight.svg#gh-dark-mode-only" height=90px>
-</p> -->
+<img align=left src="assets/BadgeDark.png" height=130px>
 
 # NeoCopyrighter
 
