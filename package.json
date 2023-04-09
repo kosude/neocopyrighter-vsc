@@ -7,11 +7,11 @@
     "license": "MIT",
     "icon": "./assets/ExtIcon.png",
     "bugs": {
-        "url": "https://github.com/kosude/neocopyrighter/issues"
+        "url": "https://github.com/kosude/neocopyrighter-vsc/issues"
     },
     "repository": {
         "type": "github",
-        "url": "https://github.com/kosude/neocopyrighter/"
+        "url": "https://github.com/kosude/neocopyrighter-vsc/"
     },
     "galleryBanner": {
         "color": "#2A2525",
@@ -31,6 +31,18 @@
             {
                 "command": "neocopyrighter.add-copyright-notice",
                 "title": "NeoCopyrighter: Add copyright notice to current file"
+            }
+        ],
+        "configuration": [
+            {
+                "title": "NeoCopyrighter",
+                "properties": {
+                    "neocopyrighter.authorName": {
+                        "type": "string",
+                        "default": "",
+                        "description": "The name of the source author to specify in copyright notices."
+                    }
+                }
             }
         ]
     },
