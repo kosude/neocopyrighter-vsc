@@ -21,6 +21,11 @@ export async function insertCommentHeader(editor: vscode.TextEditor, commentHead
     });
 }
 
+/**
+ * Asynchronously insert `commentHeader` to the top of the document in the currently open editor.
+ *
+ * @param commentHeader Comment header class
+ */
 export async function insertCommentHeaderToCurrentFile(commentHeader: CommentHeader): Promise<void> {
     if (vscode.window.activeTextEditor !== undefined) {
         // if there is an open text editor
