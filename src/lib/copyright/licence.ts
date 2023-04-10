@@ -5,20 +5,12 @@
  *   Please see the LICENCE file for more information.
  */
 
-/**
- * Enumerator containing supported licence types
- */
-export enum LicenceType {
-    /** SPDX MIT */
-    mit,
-}
+import * as registry from './licenceRegistry.json';
 
 /**
  * A data structure to hold information for a certain licence.
  */
 export interface Licence {
-    /** Licence type enumeration */
-    type: LicenceType;
     /** The display name of the licence */
     displayName: string;
     /** The licence body */
@@ -26,27 +18,41 @@ export interface Licence {
 }
 
 /**
- * SPDX MIT licence
+ * Class to produce/retrive licences
  */
-export const MIT_LICENCE: Licence = {
-    type: LicenceType.mit,
-    displayName: "MIT License",
-    body:
-`Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+export class LicenceFactory {
+    /**
+     * Retrieve the desired licence (by `id`) from the `licenceRegistry.json` file.
+     *
+     * @param id Licence ID to locate
+     * @returns Undefined if `id` could not be found
+     */
+    public static get(id: string) : Licence | undefined {
+        // get registry.<id> namespace member (json object)
+        const read = (<any>registry)[id];
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+        // if the member doesn't exist
+        if (read === undefined) {
+            return undefined;
+        }
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.`
-};
+        // in JSON, licence bodies are types as arrays of strings for readability as JSON does not ahve multiline strings
+        // we must convert this to a single string
+        let licenceObject: Licence = {
+            displayName: read.displayName,
+            body: read.body.join("\n") // joining strings to one text block here
+        };
+
+        return licenceObject;
+    }
+
+    /**
+     * Get an empty licence object
+     */
+    public static empty() : Licence {
+        return {
+            displayName: "",
+            body: ""
+        };
+    }
+}

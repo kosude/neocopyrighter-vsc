@@ -4,7 +4,7 @@
    - [ ] Can happen on file creation and opening, depends on user configuration
  - [ ] Detecting if the comment block is already present, and skipping insertion if it is
  - [ ] User-configurable options for:
-   - [ ] Licence type
+   - [x] Licence type
      - [ ] Also... different options to add specific licence header to a file regardless of configuration
    - [ ] Showing or hiding the full licence body
    - [ ] Custom body text

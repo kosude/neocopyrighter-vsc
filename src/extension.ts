@@ -15,8 +15,6 @@ import * as com from './commands';
  * @param context VS Code extension API context
  */
 export function activate(context: vscode.ExtensionContext) {
-    console.log("NeoCopyrighter activated");
-
     // register command handles
     context.subscriptions.push(
         vscode.commands.registerCommand("neocopyrighter.add-copyright-notice", com.addCopyrightNotice),

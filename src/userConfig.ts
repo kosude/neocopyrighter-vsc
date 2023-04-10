@@ -12,9 +12,7 @@ import * as lib from './lib/_index';
 /**
  * Get user/workspace VS Code configuration
  */
-function getConfiguration(): vscode.WorkspaceConfiguration {
-    return vscode.workspace.getConfiguration();
-}
+function getConfiguration() { return vscode.workspace.getConfiguration(); }
 
 /**
  * Get the user-supplied list of copyright holders and (optionally) dates
@@ -37,4 +35,19 @@ export function getCopyrightHolders(): lib.CopyrightHolder[] {
     }
 
     return holderObjects;
+}
+
+/**
+ * Get user-specified licence type
+ *
+ * @returns Undefined if the user-specified licence id was invalid
+ */
+export function getUserLicence(): lib.Licence | undefined {
+    const licenceStr: string | undefined = getConfiguration().get<string>("neocopyrighter.licence");
+
+    if (licenceStr === undefined || licenceStr === "") {
+        return undefined;
+    }
+
+    return lib.LicenceFactory.get(licenceStr);
 }

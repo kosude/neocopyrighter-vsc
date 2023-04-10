@@ -48,6 +48,20 @@
                         "default": "",
                         "description": "Specifies the date(s) of copyright claims in the same order as the respective copyright holder names; defaults to current year otherwise.",
                         "order": 1
+                    },
+                    "neocopyrighter.licence": {
+                        "type": "string",
+                        "default": "none",
+                        "enum": [
+                            "none",
+                            "mit"
+                        ],
+                        "enumDescriptions": [
+                            "No licence",
+                            "MIT licence"
+                        ],
+                        "description": "Specifies the licence to reference in copyright notices.",
+                        "order": 2
                     }
                 }
             }

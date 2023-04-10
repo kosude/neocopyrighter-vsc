@@ -8,16 +8,13 @@
 import * as vscode from 'vscode';
 
 import * as lib from './lib/_index';
-import * as conf from './settings';
+import * as defaults from './defaults';
 
 /**
  * Binding for `neocopyrighter.add-copyright-notice`
  */
 export function addCopyrightNotice() {
-    const copyright = new lib.CopyrightNotice({
-        copyrightHolders: conf.getCopyrightHolders(),
-        licence: lib.MIT_LICENCE
-    });
+    const copyright = new lib.CopyrightNotice(defaults.copyrightNoticeData());
 
     const comment = new lib.CommentHeader({}, copyright.text);
 
