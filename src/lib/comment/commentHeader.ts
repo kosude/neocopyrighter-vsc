@@ -8,6 +8,7 @@
 /**
  * Interface holding configuration for generating a comment header
  */
+// TODO: here for comment prefix customisation etc.
 export interface CommentHeaderConfig {
 }
 

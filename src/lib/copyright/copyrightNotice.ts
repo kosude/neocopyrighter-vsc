@@ -8,11 +8,21 @@
 import { Licence } from "./licence";
 
 /**
+ * Interface describing an individual copyright holder (aka author) and their respective copyright date(s)
+ */
+export interface CopyrightHolder {
+    /** Name of the copyright holder */
+    name: string,
+    /** String containing date or dates of copyright claim for this holder, e.g. "2015" or "2017-2021" - if null then current year is used */
+    date?: string
+}
+
+/**
  * Interface containing data necessary to generate a copyright notice class.
  */
 export interface CopyrightNoticeData {
-    /** String of author name */
-    authorName: string;
+    /** Array of authors */
+    copyrightHolders: CopyrightHolder[];
     /** Licence information */
     licence: Licence;
 }
@@ -41,12 +51,34 @@ export class CopyrightNotice {
 
     /**
      * Helper function to produce the text from the data for the notice
-     *
-     * @param data Data to be presented as part of the notice text
      */
     private _generateText(): string {
-        return `Copyright (c) 20XX ${this._data.authorName} - All rights reserved.
+        let rtext: string = "";
 
-${this._data.licence.body}`;
+        // add line for each author name + date
+        if (this._data.copyrightHolders.length > 0) {
+            this._data.copyrightHolders.forEach(author => {
+                rtext += `${this._generateCopyrightHolderLine(author)}\n`;
+            });
+        } else {
+            rtext += "Copyright (c) - ";
+        }
+
+        rtext += "All rights reserved.\n\n";
+        rtext += this._data.licence.body;
+
+        return rtext;
+    }
+
+    /**
+     * Helper function to generate a string describing copyright holder and date given a `CopyrightHolder` object
+     *
+     * @param holder Author information
+     * @returns Formatted string - no terminating new line
+     */
+    private _generateCopyrightHolderLine(holder: CopyrightHolder): string {
+        const date: string = holder.date ?? new Date().getFullYear().toString();
+
+        return `Copyright (c) ${date} ${holder.name}`;
     }
 }

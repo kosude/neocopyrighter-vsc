@@ -8,13 +8,14 @@
 import * as vscode from 'vscode';
 
 import * as lib from './lib/_index';
+import * as conf from './settings';
 
 /**
  * Binding for `neocopyrighter.add-copyright-notice`
  */
 export function addCopyrightNotice() {
     const copyright = new lib.CopyrightNotice({
-        authorName: "Jack Bennett",
+        copyrightHolders: conf.getCopyrightHolders(),
         licence: lib.MIT_LICENCE
     });
 
