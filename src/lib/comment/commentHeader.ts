@@ -16,7 +16,6 @@ export interface CommentHeaderConfig {
  */
 export class CommentHeader {
     /** Comment header configuration */
-    public get config() { return this._config; }
     private _config: CommentHeaderConfig;
 
     /** Overall comment string (including comment delimiters, e.g. forward slashes) */

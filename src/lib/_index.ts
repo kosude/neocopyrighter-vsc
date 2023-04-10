@@ -5,6 +5,8 @@
  *   Please see the LICENCE file for more information.
  */
 
-export * from './commentHeader';
-export * from './copyrightNotice';
-export * from './licence';
+export * from './comment/commentHeader';
+export * from './comment/commentHeaderInsert';
+
+export * from './copyright/copyrightNotice';
+export * from './copyright/licence';

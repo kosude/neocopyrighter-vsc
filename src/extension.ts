@@ -6,9 +6,8 @@
  */
 
 import * as vscode from 'vscode';
-import { commands } from 'vscode';
 
-import * as lib from './lib/_index';
+import * as com from './commands';
 
 /**
  * Static extension activation set-up function
@@ -16,19 +15,10 @@ import * as lib from './lib/_index';
  * @param context VS Code extension API context
  */
 export function activate(context: vscode.ExtensionContext) {
-	console.log("NeoCopyrighter enabled");
-    vscode.window.showInformationMessage("hi");
+	console.log("NeoCopyrighter activated");
 
     // register command handles
 	context.subscriptions.push(
-        commands.registerCommand("neocopyrighter.add-copyright-notice", () => {}),
+        vscode.commands.registerCommand("neocopyrighter.add-copyright-notice", com.addCopyrightNotice),
     );
-
-    console.log(new lib.CommentHeader(
-        {},
-        new lib.CopyrightNotice({
-            authorName: "Jack Bennett",
-            licence: lib.MIT_LICENCE
-        }).text
-    ).text);
 }
