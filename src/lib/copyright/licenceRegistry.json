@@ -1,4 +1,8 @@
 {
+    "none": {
+        "displayName": "No license",
+        "body": []
+    },
     "mit": {
         "displayName": "MIT License",
         "body": [

@@ -31,25 +31,29 @@
             {
                 "command": "neocopyrighter.add-copyright-notice",
                 "title": "NeoCopyrighter: Add copyright notice to current file"
+            },
+            {
+                "command": "neocopyrighter.add-copyright-notice-mit",
+                "title": "NeoCopyrighter: Add MIT License copyright notice to current file"
             }
         ],
         "configuration": [
             {
                 "title": "NeoCopyrighter",
                 "properties": {
-                    "neocopyrighter.copyrightHolderNames": {
+                    "neocopyrighter.author.copyrightHolderNames": {
                         "type": "array",
                         "default": "",
                         "description": "Specifies the name(s) of the copyright holder(s).",
                         "order": 0
                     },
-                    "neocopyrighter.copyrightHolderDates": {
+                    "neocopyrighter.author.copyrightHolderYears": {
                         "type": "array",
                         "default": "",
                         "description": "Specifies the date(s) of copyright claims in the same order as the respective copyright holder names; defaults to current year otherwise.",
                         "order": 1
                     },
-                    "neocopyrighter.licence": {
+                    "neocopyrighter.licence.identifier": {
                         "type": "string",
                         "default": "none",
                         "enum": [
@@ -60,8 +64,14 @@
                             "No licence",
                             "MIT licence"
                         ],
-                        "description": "Specifies the licence to reference in copyright notices.",
+                        "description": "Specifies the type of licence (by identifier) to reference in copyright notices.",
                         "order": 2
+                    },
+                    "neocopyrighter.licence.includeFullForm": {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "Choose whether or not to include the full form of the licence or not - only applies if `neocopyrighter.licence` is not `none`.",
+                        "order": 3
                     }
                 }
             }

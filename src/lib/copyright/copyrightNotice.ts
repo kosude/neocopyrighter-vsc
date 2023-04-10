@@ -25,6 +25,8 @@ export interface CopyrightNoticeData {
     copyrightHolders: CopyrightHolder[];
     /** Licence information */
     licence: Licence;
+    /** Should the licence body be included? */
+    licenceFullForm: boolean;
 }
 
 /**
@@ -64,8 +66,18 @@ export class CopyrightNotice {
             rtext += "Copyright (c) - ";
         }
 
-        rtext += "All rights reserved.\n\n";
-        rtext += this._data.licence.body;
+        rtext += "All rights reserved.";
+
+        // if licence is specified
+        if (this._data.licence.id !== "none") {
+            rtext += "\n\n";
+
+            if (this._data.licenceFullForm) {
+                rtext += this._data.licence.body;
+            } else {
+                rtext += `This project is licenced under the ${this._data.licence.displayName}.`;
+            }
+        }
 
         return rtext;
     }

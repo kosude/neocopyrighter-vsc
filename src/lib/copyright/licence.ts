@@ -11,6 +11,8 @@ import * as registry from './licenceRegistry.json';
  * A data structure to hold information for a certain licence.
  */
 export interface Licence {
+    /** ID of the licence as it is known in the JSON registry */
+    id: string;
     /** The display name of the licence */
     displayName: string;
     /** The licence body */
@@ -27,32 +29,35 @@ export class LicenceFactory {
      * @param id Licence ID to locate
      * @returns Undefined if `id` could not be found
      */
-    public static get(id: string) : Licence | undefined {
+    public static get(id: string): Licence | undefined {
         // get registry.<id> namespace member (json object)
-        const read = (<any>registry)[id];
+        const registryLicenceObject = (<any>registry)[id];
 
         // if the member doesn't exist
-        if (read === undefined) {
+        if (registryLicenceObject === undefined) {
             return undefined;
         }
 
-        // in JSON, licence bodies are types as arrays of strings for readability as JSON does not ahve multiline strings
-        // we must convert this to a single string
         let licenceObject: Licence = {
-            displayName: read.displayName,
-            body: read.body.join("\n") // joining strings to one text block here
+            id: id,
+            displayName: registryLicenceObject.displayName,
+            body: registryLicenceObject.body.join("\n"),
         };
 
         return licenceObject;
     }
 
     /**
-     * Get an empty licence object
+     * Retrieve array of all registered (supported) licences.
      */
-    public static empty() : Licence {
-        return {
-            displayName: "",
-            body: ""
-        };
+    public static getAll(): Licence[] {
+        let licenceArray: Licence[] = [];
+
+        // iterate through licences by id
+        Object.keys(registry).forEach((id) => {
+            licenceArray.push(this.get(id)!);
+        });
+
+        return licenceArray;
     }
 }

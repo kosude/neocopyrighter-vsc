@@ -7,9 +7,11 @@
 
 /**
  * Interface holding configuration for generating a comment header
+ *
+ * Unused: reserved for future use.
  */
-// TODO: here for comment prefix customisation etc.
 export interface CommentHeaderConfig {
+    // TODO: reserved for future use
 }
 
 /**

@@ -5,8 +5,8 @@
  - [ ] Detecting if the comment block is already present, and skipping insertion if it is
  - [ ] User-configurable options for:
    - [x] Licence type
-     - [ ] Also... different options to add specific licence header to a file regardless of configuration
-   - [ ] Showing or hiding the full licence body
+     - [x] Also... different options to add specific licence header to a file regardless of configuration
+   - [x] Showing or hiding the full licence body
    - [ ] Custom body text
    - [ ] Comment prefix and style (different options for different languages)
  - [x] Supplying copyright holder (author) name
