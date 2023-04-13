@@ -7,7 +7,6 @@
 
 import * as vscode from 'vscode';
 
-import * as lib from './lib/_index';
 import * as com from './extension/commands';
 
 /**
@@ -15,7 +14,7 @@ import * as com from './extension/commands';
  *
  * @param context VS Code extension API context
  */
-export function activate(context: vscode.ExtensionContext) {
+export async function activate(context: vscode.ExtensionContext) {
     // register command handles
     context.subscriptions.push(
         vscode.commands.registerCommand("neocopyrighter.add-copyright-notice", com.addCopyrightNotice),

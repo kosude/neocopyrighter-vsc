@@ -30,7 +30,7 @@
         "commands": [
             {
                 "command": "neocopyrighter.add-copyright-notice",
-                "title": "NeoCopyrighter: Add copyright notice to current file"
+                "title": "NeoCopyrighter: Add user copyright notice to current file"
             },
             {
                 "command": "neocopyrighter.add-copyright-notice-mit",
@@ -69,9 +69,27 @@
                     },
                     "neocopyrighter.licence.includeFullForm": {
                         "type": "boolean",
-                        "default": true,
+                        "default": false,
                         "description": "Choose whether or not to include the full form of the licence or not - only applies if `neocopyrighter.licence` is not `none`.",
                         "order": 3
+                    },
+                    "neocopyrighter.licenceFile.includeLicenceFile": {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "Choose whether or not to include a reference to a project licence file for more information.",
+                        "order": 4
+                    },
+                    "neocopyrighter.licenceFile.automaticallyDetectLicenceFile": {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "Choose whether or not to automatically detect a licence file - only applies if `neocopyrighter.licenceFile.includeLicenceFiles` is true.",
+                        "order": 5
+                    },
+                    "neocopyrighter.licenceFile.customLicenceFile": {
+                        "type": "string",
+                        "default": "",
+                        "description": "Set a custom licence file path relative to the workspace folder. If not empty, this overrides `neocopyrighter.licenceFile.automaticallyDetectLicenceFile`.",
+                        "order": 6
                     }
                 }
             }

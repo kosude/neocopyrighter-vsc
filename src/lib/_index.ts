@@ -10,3 +10,5 @@ export * from './comment/commentHeaderInsert';
 
 export * from './copyright/copyrightNotice';
 export * from './copyright/licence';
+
+export * from './service/licenceFileDetectionService'

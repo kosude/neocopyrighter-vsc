@@ -9,6 +9,8 @@
    - [x] Showing or hiding the full licence body
    - [ ] Custom body text
    - [ ] Comment prefix and style (different options for different languages)
+   - [x] Reference LICENCE file
  - [x] Supplying copyright holder (author) name
  - [x] Supporting multiple copyright holder names
    - [x] If the names are shown separately, support for different dates is also necessary
+ - [ ] Extension config file for workspace (preferably in the .vscode folder)

@@ -27,6 +27,8 @@ export interface CopyrightNoticeData {
     licence: Licence;
     /** Should the licence body be included? */
     licenceFullForm: boolean;
+    /** File name of a licence file to include - undefined if none should be referenced */
+    licenceFileName: string | undefined;
 }
 
 /**
@@ -77,6 +79,18 @@ export class CopyrightNotice {
             } else {
                 rtext += `This project is licenced under the ${this._data.licence.displayName}.`;
             }
+        }
+
+        // if licence file is to be included
+        if (this._data.licenceFileName !== undefined) {
+            rtext += "\n";
+
+            // extra newline if license full form was included or if no licence was mentioned
+            if (this._data.licenceFullForm || this._data.licence.id === "none") {
+                rtext += "\n";
+            }
+
+            rtext += `See the ${this._data.licenceFileName} file for more information.`;
         }
 
         return rtext;

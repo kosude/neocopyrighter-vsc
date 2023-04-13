@@ -58,3 +58,30 @@ export function getUserLicenceFullFormBoolean(): boolean {
 
     return isFullForm;
 }
+
+/**
+ * Get string holding the licence file to reference, or undefined if no licence file should be included in copyright notices.
+ */
+export async function getLicenceFileName(): Promise<string | undefined> {
+    const isIncluded = getConfiguration().get<boolean>("neocopyrighter.licenceFile.includeLicenceFile")!;
+
+    // return undefined if no licence file is to be included
+    if (!isIncluded) {
+        return undefined;
+    }
+
+    const automaticallyDetect = getConfiguration().get<boolean>("neocopyrighter.licenceFile.automaticallyDetectLicenceFile")!;
+    const customFile = getConfiguration().get<string>("neocopyrighter.licenceFile.customLicenceFile")!;
+
+    // customFile overrides automaticallyDetect
+    if (customFile !== "") {
+        return customFile;
+    }
+
+    if (automaticallyDetect) {
+        // this may also be undefined if none can be found.
+        return lib.LicenceFileDetectionService.findLicenceFile();
+    }
+
+    return undefined;
+}
