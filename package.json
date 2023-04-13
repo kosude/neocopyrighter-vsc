@@ -1,6 +1,6 @@
 {
     "name": "neocopyrighter",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "displayName": "NeoCopyrighter",
     "publisher": "jack-bennett",
     "description": "Automatically insert copyright and licence notice in source files",
