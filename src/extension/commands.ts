@@ -20,11 +20,13 @@ export async function addCopyrightNoticeWithLicence(id: string) {
         licence: lib.LicenceFactory.get(id)!,
         licenceFullForm: conf.getUserLicenceFullFormBoolean(),
         licenceFileName: await conf.getLicenceFileName()
-    });
+    }, conf.getArrOnNewLine());
 
-    const comment = new lib.CommentHeader({}, copyright.text);
+    const style = conf.getUserCommentStyle(lib.getCommentStyleTypeForCurrentDocument());
 
-    lib.insertCommentHeaderToCurrentFile(comment).catch((e) => {
+    const comment = new lib.CommentHeader(style, copyright.text);
+
+    comment.pushToCurrentFile().catch((e) => {
         vscode.window.showErrorMessage(`Attempted to add copyright notice - ${e}`);
     });
 }

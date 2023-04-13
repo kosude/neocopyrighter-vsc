@@ -6,9 +6,9 @@
  */
 
 export * from './comment/commentHeader';
-export * from './comment/commentHeaderInsert';
+export * from './comment/commentStyle';
 
 export * from './copyright/copyrightNotice';
 export * from './copyright/licence';
 
-export * from './service/licenceFileDetectionService'
+export * from './service/licenceFileDetectionService';

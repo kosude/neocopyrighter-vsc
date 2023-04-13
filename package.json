@@ -90,8 +90,39 @@
                         "default": "",
                         "description": "Set a custom licence file path relative to the workspace folder. If not empty, this overrides `neocopyrighter.licenceFile.automaticallyDetectLicenceFile`.",
                         "order": 6
+                    },
+                    "neocopyrighter.copyrightNoticeStyle.placeAllRightsReservedOnNewLine": {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "Choose whether or not to place the 'All rights reserved' phrase on a new line. Only applies when `neocopyrighter.author.copyrightHolderNames` is not empty.",
+                        "order": 7
                     }
-                }
+                },
+                "order": 0
+            },
+            {
+                "title": "Comment style: C-style languages",
+                "properties": {
+                    "neocopyrighter.commentStyle.cStyle.headPrefix": {
+                        "type": "string",
+                        "default": "/*",
+                        "description": "Comment prefix for the first line of comment blocks in C-style languages.",
+                        "order": 0
+                    },
+                    "neocopyrighter.commentStyle.cStyle.bodyPrefix": {
+                        "type": "string",
+                        "default": " *",
+                        "description": "Comment prefix for the middle lines of comment blocks in C-style languages.",
+                        "order": 1
+                    },
+                    "neocopyrighter.commentStyle.cStyle.tailPrefix": {
+                        "type": "string",
+                        "default": " */",
+                        "description": "Comment prefix for the last line of comment blocks in C-style languages.",
+                        "order": 2
+                    }
+                },
+                "order": 1
             }
         ]
     },

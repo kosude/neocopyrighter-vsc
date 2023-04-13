@@ -36,20 +36,23 @@ export interface CopyrightNoticeData {
  */
 export class CopyrightNotice {
     /** Copyright notice data */
-    public get data() { return this._data; }
     private _data: CopyrightNoticeData;
 
     /** String to be presented as the copyright notice */
     public get text() { return this._text; }
     private _text: string;
 
+    /** Whether or not to place 'All rights reserved' on a new line. */
+    private _arrNewLine: boolean;
+
     /**
      * Generate a copyright notice class from the given data
      *
      * @param data Data to be presented as part of the notice text
      */
-    public constructor(data: CopyrightNoticeData) {
+    public constructor(data: CopyrightNoticeData, arrNewLine: boolean) {
         this._data = data;
+        this._arrNewLine = arrNewLine;
         this._text = this._generateText();
     }
 
@@ -62,13 +65,19 @@ export class CopyrightNotice {
         // add line for each author name + date
         if (this._data.copyrightHolders.length > 0) {
             this._data.copyrightHolders.forEach(author => {
-                rtext += `${this._generateCopyrightHolderLine(author)}\n`;
+                rtext += `${this._generateCopyrightHolderLine(author)}`;
             });
+
+            if (this._arrNewLine) {
+                rtext += "\n";
+            } else {
+                rtext += " ";
+            }
         } else {
             rtext += "Copyright (c) - ";
         }
 
-        rtext += "All rights reserved.";
+        rtext += "All Rights Reserved.";
 
         // if licence is specified
         if (this._data.licence.id !== "none") {
@@ -105,6 +114,6 @@ export class CopyrightNotice {
     private _generateCopyrightHolderLine(holder: CopyrightHolder): string {
         const date: string = holder.date ?? new Date().getFullYear().toString();
 
-        return `Copyright (c) ${date} ${holder.name}`;
+        return `Copyright (c) ${date} ${holder.name}.`;
     }
 }

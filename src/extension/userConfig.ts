@@ -12,25 +12,23 @@ import * as lib from '../lib/_index';
 /**
  * Get user/workspace VS Code configuration
  */
-function getConfiguration() { return vscode.workspace.getConfiguration(); }
+function getConfiguration() {
+    return vscode.workspace.getConfiguration();
+}
 
 /**
  * Get the user-supplied list of copyright holders and (optionally) dates
  */
 export function getCopyrightHolders(): lib.CopyrightHolder[] {
-    const names: string[] | undefined = getConfiguration().get<string[]>("neocopyrighter.author.copyrightHolderNames");
-    const dates: string[] | undefined = getConfiguration().get<string[]>("neocopyrighter.author.copyrightHolderYears");
-
-    if (names === undefined) {
-        return [];
-    }
+    const names = getConfiguration().get<string[]>("neocopyrighter.author.copyrightHolderNames")!;
+    const dates = getConfiguration().get<string[]>("neocopyrighter.author.copyrightHolderYears")!;
 
     // map the separate string arrays into a single holders array
     let holderObjects: lib.CopyrightHolder[] = [];
     for (let i = 0; i < names.length; i++) {
         holderObjects.push({
             name: names[i],
-            date: (dates !== undefined) ? ((dates[i] !== "") ? dates[i] : undefined) : undefined
+            date: ((dates[i] !== "") ? dates[i] : undefined)
         });
     }
 
@@ -44,7 +42,7 @@ export function getCopyrightHolders(): lib.CopyrightHolder[] {
  */
 export function getUserLicence(): lib.Licence {
     // drop-down list should never be undefined in practice, and will only contain valid ids!
-    const licenceStr: string = getConfiguration().get<string>("neocopyrighter.licence.identifier")!;
+    const licenceStr = getConfiguration().get<string>("neocopyrighter.licence.identifier")!;
 
     return lib.LicenceFactory.get(licenceStr)!;
 }
@@ -54,7 +52,7 @@ export function getUserLicence(): lib.Licence {
  */
 export function getUserLicenceFullFormBoolean(): boolean {
     // it should be impossible for a VS Code boolean value to be undefined, so we rely on it being set (!)
-    const isFullForm: boolean = getConfiguration().get<boolean>("neocopyrighter.licence.includeFullForm")!;
+    const isFullForm = getConfiguration().get<boolean>("neocopyrighter.licence.includeFullForm")!;
 
     return isFullForm;
 }
@@ -84,4 +82,33 @@ export async function getLicenceFileName(): Promise<string | undefined> {
     }
 
     return undefined;
+}
+
+export function getArrOnNewLine(): boolean {
+    return getConfiguration().get<boolean>("neocopyrighter.copyrightNoticeStyle.placeAllRightsReservedOnNewLine")!;
+}
+
+/**
+ * Get the comment header style for a particular language type based on user preferences.
+ *
+ * @param commentStyleType Language type id, aligning with those in package.json `commentStyle.*` config definitions.
+ */
+export function getUserCommentStyle(commentStyleType: string | undefined): lib.CommentStyle | undefined {
+    if (commentStyleType === undefined) {
+        return undefined;
+    }
+
+    const head = getConfiguration().get<string>(`neocopyrighter.commentStyle.${commentStyleType}.headPrefix`);
+    const body = getConfiguration().get<string>(`neocopyrighter.commentStyle.${commentStyleType}.bodyPrefix`);
+    const tail = getConfiguration().get<string>(`neocopyrighter.commentStyle.${commentStyleType}.tailPrefix`);
+
+    if (head === undefined || body === undefined || tail === undefined) {
+        throw new Error("Invalid commentStyleType option!");
+    }
+
+    return {
+        headPrefix: head,
+        bodyPrefix: body,
+        tailPrefix: tail
+    };
 }

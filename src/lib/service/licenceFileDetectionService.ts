@@ -5,7 +5,6 @@
  *   Please see the LICENCE file for more information.
  */
 
-import { match } from 'assert';
 import * as vscode from 'vscode';
 
 /**
