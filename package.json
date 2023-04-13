@@ -39,7 +39,7 @@
         ],
         "configuration": [
             {
-                "title": "NeoCopyrighter",
+                "title": "Author",
                 "properties": {
                     "neocopyrighter.author.copyrightHolderNames": {
                         "type": "array",
@@ -53,6 +53,30 @@
                         "description": "Specifies the date(s) of copyright claims in the same order as the respective copyright holder names; defaults to current year otherwise.",
                         "order": 1
                     },
+                    "neocopyrighter.licenceFile.includeLicenceFile": {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "Choose whether or not to include a reference to a project licence file for more information.",
+                        "order": 2
+                    },
+                    "neocopyrighter.licenceFile.automaticallyDetectLicenceFile": {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "Choose whether or not to automatically detect a licence file - only applies if `neocopyrighter.licenceFile.includeLicenceFiles` is true.",
+                        "order": 3
+                    },
+                    "neocopyrighter.licenceFile.customLicenceFile": {
+                        "type": "string",
+                        "default": "",
+                        "description": "Set a custom licence file path relative to the workspace folder. If not empty, this overrides `neocopyrighter.licenceFile.automaticallyDetectLicenceFile`.",
+                        "order": 4
+                    }
+                },
+                "order": 0
+            },
+            {
+                "title": "Licence",
+                "properties": {
                     "neocopyrighter.licence.identifier": {
                         "type": "string",
                         "default": "none",
@@ -65,43 +89,43 @@
                             "MIT licence"
                         ],
                         "description": "Specifies the type of licence (by identifier) to reference in copyright notices.",
-                        "order": 2
-                    },
+                        "order": 0
+                    }
+                },
+                "order": 1
+            },
+            {
+                "title": "Format",
+                "properties": {
                     "neocopyrighter.licence.includeFullForm": {
                         "type": "boolean",
                         "default": false,
                         "description": "Choose whether or not to include the full form of the licence or not - only applies if `neocopyrighter.licence` is not `none`.",
-                        "order": 3
-                    },
-                    "neocopyrighter.licenceFile.includeLicenceFile": {
-                        "type": "boolean",
-                        "default": true,
-                        "description": "Choose whether or not to include a reference to a project licence file for more information.",
-                        "order": 4
-                    },
-                    "neocopyrighter.licenceFile.automaticallyDetectLicenceFile": {
-                        "type": "boolean",
-                        "default": true,
-                        "description": "Choose whether or not to automatically detect a licence file - only applies if `neocopyrighter.licenceFile.includeLicenceFiles` is true.",
-                        "order": 5
-                    },
-                    "neocopyrighter.licenceFile.customLicenceFile": {
-                        "type": "string",
-                        "default": "",
-                        "description": "Set a custom licence file path relative to the workspace folder. If not empty, this overrides `neocopyrighter.licenceFile.automaticallyDetectLicenceFile`.",
-                        "order": 6
+                        "order": 0
                     },
                     "neocopyrighter.copyrightNoticeStyle.placeAllRightsReservedOnNewLine": {
                         "type": "boolean",
                         "default": true,
                         "description": "Choose whether or not to place the 'All rights reserved' phrase on a new line. Only applies when `neocopyrighter.author.copyrightHolderNames` is not empty.",
-                        "order": 7
+                        "order": 1
                     }
                 },
-                "order": 0
+                "order": 2
             },
             {
-                "title": "Comment style: C-style languages",
+                "title": "Automation",
+                "properties": {
+                    "neocopyrighter.automation.automaticallyCopyrightFiles": {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "Choose whether or not to automatically add copyright notices to files when they are created or opened/focused in the editor.",
+                        "order": 0
+                    }
+                },
+                "order": 3
+            },
+            {
+                "title": "C-style Languages",
                 "properties": {
                     "neocopyrighter.commentStyle.cStyle.headPrefix": {
                         "type": "string",
@@ -122,7 +146,7 @@
                         "order": 2
                     }
                 },
-                "order": 1
+                "order": 4
             }
         ]
     },

@@ -112,3 +112,10 @@ export function getUserCommentStyle(commentStyleType: string | undefined): lib.C
         tailPrefix: tail
     };
 }
+
+/**
+ * Return a boolean showing whether or not the user has decided to have copyright notices automatically inserted to opened files.
+ */
+export function getCopyrighterAutomationSetting(): boolean {
+    return getConfiguration().get<boolean>("neocopyrighter.automation.automaticallyCopyrightFiles")!;
+}

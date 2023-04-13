@@ -7,7 +7,7 @@
 
 import * as vscode from 'vscode';
 
-import * as bindings from './commentStyleBindings.json';
+import * as bindings from './commentStyleTypeBindings.json';
 
 /**
  * Interface containing comment style information
@@ -44,13 +44,8 @@ export function getCommentStyleTypeForLang(langId: string): string | undefined {
 }
 
 /**
- * Get the appropriate comment style for the current document's language
+ * Get the appropriate comment style for `editor`'s document's language
  */
-export function getCommentStyleTypeForCurrentDocument(): string | undefined {
-    const openEditor = vscode.window.activeTextEditor;
-    if (openEditor === undefined) {
-        return undefined;
-    }
-
-    return getCommentStyleTypeForLang(openEditor.document.languageId);
+export function getCommentStyleType(editor: vscode.TextEditor): string | undefined {
+    return getCommentStyleTypeForLang(editor.document.languageId);
 }

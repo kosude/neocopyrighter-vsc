@@ -11,4 +11,5 @@ export * from './comment/commentStyle';
 export * from './copyright/copyrightNotice';
 export * from './copyright/licence';
 
+export * from './service/copyrighterService';
 export * from './service/licenceFileDetectionService';
