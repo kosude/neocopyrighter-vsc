@@ -1,7 +1,30 @@
 {
     "cStyle": {
         "languages": [
-            "c"
+            "c",
+            "cpp",
+            "csharp",
+            "cuda-cpp",
+            "go",
+            "groovy",
+            "java",
+            "javascript",
+            "javascriptreact",
+            "objective-c",
+            "objective-cpp",
+            "rust",
+            "swift",
+            "typescript",
+            "typescriptreact",
+            "vue"
+        ]
+    },
+    "hashtag": {
+        "languages": [
+            "python",
+            "r",
+            "ruby",
+            "shellscript"
         ]
     }
 }

@@ -25,7 +25,28 @@
         "vscode": "^1.77.0"
     },
     "main": "./out/extension.js",
-    "activationEvents": [],
+    "activationEvents": [
+        "onLanguage:c",
+        "onLanguage:cpp",
+        "onLanguage:csharp",
+        "onLanguage:cuda-cpp",
+        "onLanguage:go",
+        "onLanguage:groovy",
+        "onLanguage:java",
+        "onLanguage:javascript",
+        "onLanguage:javascriptreact",
+        "onLanguage:objective-c",
+        "onLanguage:objective-cpp",
+        "onLanguage:rust",
+        "onLanguage:swift",
+        "onLanguage:typescript",
+        "onLanguage:typescriptreact",
+        "onLanguage:vue",
+        "onLanguage:python",
+        "onLanguage:r",
+        "onLanguage:ruby",
+        "onLanguage:shellscript"
+    ],
     "contributes": {
         "commands": [
             {
@@ -125,7 +146,7 @@
                 "order": 3
             },
             {
-                "title": "C-style Languages",
+                "title": "C-style Comments",
                 "properties": {
                     "neocopyrighter.commentStyle.cStyle.headPrefix": {
                         "type": "string",
@@ -147,6 +168,30 @@
                     }
                 },
                 "order": 4
+            },
+            {
+                "title": "Hashtag Comments",
+                "properties": {
+                    "neocopyrighter.commentStyle.hashtag.headPrefix": {
+                        "type": "string",
+                        "default": "#",
+                        "description": "Comment prefix for the first line of comment blocks in languages that use hashtags.",
+                        "order": 0
+                    },
+                    "neocopyrighter.commentStyle.hashtag.bodyPrefix": {
+                        "type": "string",
+                        "default": "#",
+                        "description": "Comment prefix for the middle lines of comment blocks in languages that use hashtags.",
+                        "order": 1
+                    },
+                    "neocopyrighter.commentStyle.hashtag.tailPrefix": {
+                        "type": "string",
+                        "default": "#",
+                        "description": "Comment prefix for the last line of comment blocks in languages that use hashtags.",
+                        "order": 2
+                    }
+                },
+                "order": 5
             }
         ]
     },
