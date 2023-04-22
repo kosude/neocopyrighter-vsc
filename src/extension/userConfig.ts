@@ -36,6 +36,24 @@ export function getCopyrightHolders(): lib.CopyrightHolder[] {
 }
 
 /**
+ * Get user-specified licence display name
+ *
+ * @returns string
+ */
+export function getCustomLicenceDisplayName(): string {
+    return getConfiguration().get<string>("neocopyrighter.licence.customLicenceDisplayName")!;
+}
+
+/**
+ * Get user-specified licence body text
+ *
+ * @returns string
+ */
+export function getCustomLicenceBodyText(): string {
+    return getConfiguration().get<string>("neocopyrighter.licence.customLicenceBody")!;
+}
+
+/**
  * Get user-specified licence type
  *
  * @returns Undefined if the user-specified licence id was invalid
@@ -43,6 +61,10 @@ export function getCopyrightHolders(): lib.CopyrightHolder[] {
 export function getUserLicence(): lib.Licence {
     // drop-down list should never be undefined in practice, and will only contain valid ids!
     const licenceStr = getConfiguration().get<string>("neocopyrighter.licence.identifier")!;
+
+    if (licenceStr == "use custom") {
+        return lib.LicenceFactory.custom(getCustomLicenceDisplayName(), getCustomLicenceBodyText());
+    }
 
     return lib.LicenceFactory.get(licenceStr)!;
 }

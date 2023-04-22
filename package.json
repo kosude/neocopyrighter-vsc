@@ -103,14 +103,28 @@
                         "default": "none",
                         "enum": [
                             "none",
+                            "use custom",
                             "mit"
                         ],
                         "enumDescriptions": [
                             "No licence",
+                            "Use custom licence override",
                             "MIT licence"
                         ],
                         "description": "Specifies the type of licence (by identifier) to reference in copyright notices.",
                         "order": 0
+                    },
+                    "neocopyrighter.licence.customLicenceDisplayName": {
+                        "type": "string",
+                        "default": "<CUSTOM>",
+                        "description": "Use this custom licence display name if `neocopyrighter.licence.identifier` is set to `use custom`.",
+                        "order": 1
+                    },
+                    "neocopyrighter.licence.customLicenceBody": {
+                        "type": "string",
+                        "default": "<CUSTOM>",
+                        "description": "Use this custom licence text if `neocopyrighter.licence.identifier` is set to `use custom`.",
+                        "order": 2
                     }
                 },
                 "order": 1

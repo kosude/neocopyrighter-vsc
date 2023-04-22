@@ -60,4 +60,15 @@ export class LicenceFactory {
 
         return licenceArray;
     }
+
+    /**
+     * Return a licence object with custom specified display name and body text
+     */
+    public static custom(displayName: string, body: string): Licence {
+        return {
+            id: "custom",
+            displayName: displayName,
+            body: body
+        };
+    }
 }

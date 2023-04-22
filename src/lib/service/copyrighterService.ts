@@ -45,7 +45,7 @@ export class CopyrighterService {
         // construct copyright notice with user-set data
         const copyright = new CopyrightNotice({
             copyrightHolders: conf.getCopyrightHolders(),
-            licence: LicenceFactory.get(licence ?? conf.getUserLicence().id)!,
+            licence: (licence !== undefined) ? LicenceFactory.get(licence) : conf.getUserLicence(),
             licenceFullForm: conf.getUserLicenceFullFormBoolean(),
             licenceFileName: await conf.getLicenceFileName()
         }, conf.getArrOnNewLine());
