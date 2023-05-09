@@ -141,3 +141,10 @@ export function getUserCommentStyle(commentStyleType: string | undefined): lib.C
 export function getCopyrighterAutomationSetting(): boolean {
     return getConfiguration().get<boolean>("neocopyrighter.automation.automaticallyCopyrightFiles")!;
 }
+
+/**
+ * Return true if the copyrighter automation service should be limited to new files only.
+ */
+export function getCopyrighterNewFilesAutomationOnly(): boolean {
+    return getConfiguration().get<boolean>("neocopyrighter.automation.newFilesOnly")!;
+}

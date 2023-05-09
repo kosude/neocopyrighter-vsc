@@ -155,6 +155,12 @@
                         "default": true,
                         "description": "Choose whether or not to automatically add copyright notices to files when they are created or opened/focused in the editor.",
                         "order": 0
+                    },
+                    "neocopyrighter.automation.newFilesOnly": {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "Choose whether or not to limit copyrighter automation to new files on creation.",
+                        "order": 0
                     }
                 },
                 "order": 3

@@ -26,5 +26,9 @@ export async function activate(context: vscode.ExtensionContext) {
         vscode.commands.registerCommand("neocopyrighter.add-copyright-notice-mit", () => com.addCopyrightNoticeWithLicence("mit")),
     );
 
-    vscode.window.onDidChangeActiveTextEditor((e) => { if (e !== undefined) { lst.insertCopyrightToEditor(e); } });
+    vscode.window.onDidChangeActiveTextEditor((e) => {
+        if (e !== undefined) {
+            lst.insertCopyrightToEditor(e);
+        }
+    });
 }
